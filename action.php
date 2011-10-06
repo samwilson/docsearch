@@ -72,7 +72,8 @@ class action_plugin_docsearch extends DokuWiki_Action_Plugin {
 		// printout the results
 		$num = 0;
 		foreach ($data as $id => $hits) {
-			echo '<a href="'.ml($id).'" title="" class="wikilink1">'.hsc($id).'</a>:';
+			$fragment = (strpos($id, '.pdf')!==false) ? '#search='.$QUERY : '';
+			echo '<a href="'.ml($id).$fragment.'" title="" class="wikilink1">'.hsc($id).'</a>:';
 			echo '<span class="search_cnt">'.hsc($hits).' '.hsc($lang['hits']).'</span>';
 			if ($num < 15) {
 				echo '<div class="search_snippet">';
